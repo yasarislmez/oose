@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../../../İndirilenler/jbootx-master/src/main/resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oose.GirisEkraniController">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="41.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar fx:id="menubar" prefHeight="29.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="Ürün">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Ürün Ekle" />
+                              <MenuItem mnemonicParsing="false" text="Ürün Sil" />
+                              <MenuItem mnemonicParsing="false" text="Ürün güncelle" />
+                        </items>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Firma">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Firmalar" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Stok">
+                        <items>
+                          <MenuItem mnemonicParsing="false" text="Stok takibi" />
+                        </items>
+                      </Menu>
+                    </menus>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets left="3.0" top="5.0" />
+                     </padding>
+                  </MenuBar>
+               </children>
+            </AnchorPane>
+         </top>
+         <bottom>
+            <AnchorPane prefHeight="94.0" prefWidth="1080.0" style="-fx-background-color: #c8e6c9;" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="94.0" prefWidth="1080.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" text="Toplam Satış = ">
+                           <HBox.margin>
+                              <Insets left="300.0" top="30.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="toplamSatisLabel" text="Label">
+                           <HBox.margin>
+                              <Insets left="300.0" top="30.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </bottom>
+         <center>
+            <AnchorPane BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="urunLİstele_tableView" prefHeight="585.0" prefWidth="756.0" style="-fx-border-color: #00897b;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                    <columns>
+                      <TableColumn fx:id="urun_id" prefWidth="100.0" text="URUN İD" />
+                      <TableColumn fx:id="urun_Adi" editable="false" prefWidth="250.0" sortable="false" text="URUN ADI" />
+                        <TableColumn fx:id="urun_fiyat" minWidth="0.0" prefWidth="123.0" text="FİYAT" />
+                        <TableColumn fx:id="indirim" minWidth="0.0" prefWidth="97.0" text="İNDİRİM" />
+                        <TableColumn fx:id="satis_fiyati" prefWidth="114.0" text="SATIŞ FİYATI" />
+                    </columns>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </center>
+         <right>
+            <AnchorPane prefHeight="491.0" prefWidth="324.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox prefHeight="491.0" prefWidth="324.0" style="-fx-background-color: #e6ee9c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <TextField fx:id="urun_idTextarea" alignment="TOP_CENTER" promptText="Barkod giriniz">
+                           <VBox.margin>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="100.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <Button fx:id="urunArabutton" alignment="CENTER" mnemonicParsing="false" onAction="#urunara" prefWidth="144.0" text="Ara">
+                           <VBox.margin>
+                              <Insets bottom="50.0" left="100.0" right="20.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </right>
+      </BorderPane>
+   </children>
+</AnchorPane>
