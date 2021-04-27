@@ -21,12 +21,11 @@ public class urunDAO extends Dbconnection {
     private List<urunler> urunlist = new ArrayList<>();
 
     public void create(urunler u) {
-
         try {
             Statement st = this.connection().createStatement();
-            st.executeUpdate("insert into urunler (u_id,u_adi,a_fiyati,s_fiyati,kategori_id,firma_id)"
-                    + " values('" + u.getU_id() + "''" + u.getU_adi() + "')'" + u.getA_fiyati() + "''"
-                    + u.getS_fiyati() + "''" + u.getuK_id() + "''" + u.getuF_id() + "'");
+            st.executeUpdate("insert into urunler (u_adi,a_fiyati,s_fiyati)"
+                    + " values('" + u.getU_adi() + "','" + u.getA_fiyati() + "','"
+                    + u.getS_fiyati() + "')");
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -43,8 +42,8 @@ public class urunDAO extends Dbconnection {
             while (rs.next()) {
                 urunler tmp = new urunler(rs.getInt("u_id"),
                         rs.getString("u_adi"),
-                        rs.getDouble("a_fiyatı"),
-                        rs.getDouble("s_fiyatı"),
+                        rs.getDouble("a_fiyati"),
+                        rs.getDouble("s_fiyati"),
                         rs.getInt("kategori_id"),
                         rs.getInt("firma_id"));
                 urunlist.add(tmp);

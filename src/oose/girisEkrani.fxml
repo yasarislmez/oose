@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="@../../../../İndirilenler/jbootx-master/src/main/resources/bootstrap3.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oose.GirisEkraniController">
+<AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="/Dosyalar/bootstrap3.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oose.GirisEkraniController">
    <children>
       <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
@@ -105,6 +105,32 @@
                         <Button fx:id="urunArabutton" alignment="CENTER" mnemonicParsing="false" onAction="#urunara" prefWidth="144.0" text="Ara">
                            <VBox.margin>
                               <Insets bottom="50.0" left="100.0" right="20.0" />
+                           </VBox.margin>
+                           <graphic>
+                              <ImageView pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        
+                        
+                        <TextField fx:id="urun_adi_id" alignment="TOP_CENTER" promptText="Barkod giriniz">
+                           <VBox.margin>
+                              <Insets bottom="0" left="50.0" right="50.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="urun_fiyat_id" alignment="TOP_CENTER" promptText="Barkod giriniz">
+                           <VBox.margin>
+                              <Insets bottom="0" left="50.0" right="50.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="urun_satis_id" alignment="TOP_CENTER" promptText="Barkod giriniz">
+                           <VBox.margin>
+                              <Insets bottom="0" left="50.0" right="50.0" top="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                        
+                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#urunEkle" prefWidth="144.0" text="Ekle">
+                           <VBox.margin>
+                              <Insets bottom="0" left="50.0" right="50.0" top="10.0" />
                            </VBox.margin>
                            <graphic>
                               <ImageView pickOnBounds="true" preserveRatio="true" />

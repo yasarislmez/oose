@@ -38,6 +38,12 @@ public class GirisEkraniController implements Initializable {
     @FXML
     private TextField urun_idTextarea;
     @FXML
+    private TextField urun_adi_id;
+    @FXML
+    private TextField urun_fiyat_id;
+    @FXML
+    private TextField urun_satis_id;
+    @FXML
     private Button urunArabutton;
     @FXML
     private TableView<urunler> urunLİstele_tableView;
@@ -75,6 +81,19 @@ public class GirisEkraniController implements Initializable {
 
         urunlist = FXCollections.observableArrayList(udao.read(sayi));
         urunLİstele_tableView.setItems(urunlist);
+
+    }
+
+    @FXML
+    private void urunEkle(ActionEvent event) {
+        urunDAO udao = new urunDAO();
+        urunler urun = new urunler();
+
+        urun.setU_adi(urun_adi_id.getText());
+        urun.setA_fiyati(Double.parseDouble(urun_fiyat_id.getText()));
+        urun.setS_fiyati(Double.parseDouble(urun_satis_id.getText()));
+        udao.create(urun);               
+
     }
 
 }
