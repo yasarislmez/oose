@@ -54,6 +54,28 @@ public class urunDAO extends Dbconnection {
         return urunlist;
 
     }
+    
+    public List<urunler> read() {
+
+        try {
+            Statement st = this.connection().createStatement();
+            ResultSet rs = st.executeQuery("select * from urunler ");
+
+            while (rs.next()) {
+                urunler tmp = new urunler(rs.getInt("u_id"),
+                        rs.getString("u_adi"),
+                        rs.getDouble("a_fiyati"),
+                        rs.getDouble("s_fiyati"),
+                        rs.getInt("kategori_id"),
+                        rs.getInt("firma_id"));
+                urunlist.add(tmp);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return urunlist;
+
+    }
 
     public void update(urunler u) {
 

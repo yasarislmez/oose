@@ -8,8 +8,8 @@ public class urunler {
     private String u_adi;
     private double a_fiyati;
     private double s_fiyati;
-    private int uK_id;
-    private int uF_id;
+    private int kategori_id;
+    private int firma_id;
 
     public urunler() {
     }
@@ -19,8 +19,8 @@ public class urunler {
         this.u_adi = u_adi;
         this.a_fiyati = a_fiyati;
         this.s_fiyati = s_fiyati;
-        this.uK_id = uK_id;
-        this.uF_id = uF_id;
+        this.kategori_id = uK_id;
+        this.firma_id = uF_id;
     }
 
     public int getU_id() {
@@ -55,19 +55,19 @@ public class urunler {
         this.s_fiyati = s_fiyati;
     }
 
-    public int getuK_id() {
-        return uK_id;
+    public int getKategori_id() {
+        return kategori_id;
     }
 
-    public void setuK_id(int uK_id) {
-        this.uK_id = uK_id;
+    public void setKategori_id(int kategori_id) {
+        this.kategori_id = kategori_id;
     }
 
-    public int getuF_id() {
-        return uF_id;
+    public int getFirma_id() {
+        return firma_id;
     }
 
-    public void setuF_id(int uF_id) {
-        this.uF_id = uF_id;
+    public void setFirma_id(int firma_id) {
+        this.firma_id = firma_id;
     }
 }

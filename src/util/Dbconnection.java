@@ -20,7 +20,7 @@ public class Dbconnection {
         
         try {
             Class.forName("org.postgresql.Driver");
-            this.connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/urunler","postgres","1234");
+            this.connection= DriverManager.getConnection("jdbc:postgresql://localhost:5432/nyym","postgres","1234");
         } catch (Exception e) {
         }
         return this.connection;

@@ -7,20 +7,28 @@ package oose;
 
 import Dao.urunDAO;
 import Entity.urunler;
+import com.sun.deploy.util.FXLoader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -55,17 +63,20 @@ public class GirisEkraniController implements Initializable {
     private TableColumn<urunler, String> urun_Adi;
     @FXML
     private TableColumn<urunler, Double> urun_fiyat;
-    @FXML
-    private TableColumn<urunler, ?> indirim;
+  
     @FXML
     private TableColumn<urunler, Double> satis_fiyati;
+    @FXML
+    private MenuItem stokgoster;
+    @FXML
+    private TableColumn<?, ?> indirim;
 
     /**
      * Initializes the controllerclass.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
     }
 
     @FXML
@@ -94,6 +105,24 @@ public class GirisEkraniController implements Initializable {
         urun.setS_fiyati(Double.parseDouble(urun_satis_id.getText()));
         udao.create(urun);               
 
+    }
+
+    @FXML
+    private void stoksayfasiGecis(ActionEvent event) {
+        
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("stokGoster.fxml"));
+        
+          try {
+                    Parent root=loader.load();
+                    Stage stage =new Stage();
+                    Scene scene=new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+ 
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        
     }
 
 }
