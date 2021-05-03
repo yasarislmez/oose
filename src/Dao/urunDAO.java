@@ -81,7 +81,7 @@ public class urunDAO extends Dbconnection {
 
         try {
             Statement st = this.connection().createStatement();
-            st.executeUpdate("update urunler set u_adi= '" + u.getU_adi() + "'where u_id=" + u.getU_id());
+            st.executeUpdate("update urunler set u_adi= '" + u.getU_adi()+ "',a_fiyati='"+u.getA_fiyati()+"', s_fiyati= '"+u.getS_fiyati()+"' where u_id=" + u.getU_id());
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -89,11 +89,11 @@ public class urunDAO extends Dbconnection {
 
     }
 
-    public void delete(urunler u) {
+    public void delete(int id) {
 
         try {
             Statement st = this.connection().createStatement();
-            st.executeUpdate("delete from urunler where u_id=" + u.getU_id());
+            st.executeUpdate("delete from urunler where u_id=" + id);
 
         } catch (Exception e) {
             System.out.println(e.getMessage());
