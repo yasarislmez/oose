@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oose;
 
 import Dao.urunDAO;
@@ -20,16 +16,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-/**
- * FXML Controller class
- *
- * @author ubuntu
- */
+
 public class StokGosterController implements Initializable {
 
     ObservableList<urunler> urunlist;
     private int sayi;
-
+    @FXML
+    private TextField stok_idTextarea;
     @FXML
     private TextField barkodTextfield;
     @FXML
@@ -49,14 +42,13 @@ public class StokGosterController implements Initializable {
     private TableColumn<urunler, Integer> colFirmaid;
     @FXML
     private Button buttonAra;
+    @FXML
+    private Button buttonGeri;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    urunDAO udao = new urunDAO();
-
+        
+        urunDAO udao = new urunDAO();
         colUrunid.setCellValueFactory(new PropertyValueFactory<>("u_id"));
         colurunAdi.setCellValueFactory(new PropertyValueFactory<>("u_adi"));
         colAfiyati.setCellValueFactory(new PropertyValueFactory<>("a_fiyati"));
@@ -70,7 +62,29 @@ public class StokGosterController implements Initializable {
     @FXML
     private void araButton(ActionEvent event) {
 
+        sayi = Integer.parseInt(stok_idTextarea.getText());
+        urunDAO udao = new urunDAO();
+        colUrunid.setCellValueFactory(new PropertyValueFactory<>("u_id"));
+        colurunAdi.setCellValueFactory(new PropertyValueFactory<>("u_adi"));
+        colAfiyati.setCellValueFactory(new PropertyValueFactory<>("a_fiyati"));
+        colSfiyati.setCellValueFactory(new PropertyValueFactory<>("s_fiyati"));
 
+        urunlist = FXCollections.observableArrayList(udao.read(sayi));
+        stoktableView.setItems(urunlist);      
+    }
+    
+    @FXML
+    private void geriButton(ActionEvent event) {
+    urunDAO udao = new urunDAO();
+        colUrunid.setCellValueFactory(new PropertyValueFactory<>("u_id"));
+        colurunAdi.setCellValueFactory(new PropertyValueFactory<>("u_adi"));
+        colAfiyati.setCellValueFactory(new PropertyValueFactory<>("a_fiyati"));
+        colSfiyati.setCellValueFactory(new PropertyValueFactory<>("s_fiyati"));
+        colKategoriid.setCellValueFactory(new PropertyValueFactory<>("kategori_id"));
+        colFirmaid.setCellValueFactory(new PropertyValueFactory<>("firma_id"));
+        urunlist = FXCollections.observableArrayList(udao.read());
+        stoktableView.setItems(urunlist);
+        stok_idTextarea.setText("");
     }
 
 }

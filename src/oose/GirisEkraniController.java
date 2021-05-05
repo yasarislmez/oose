@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package oose;
 
 import Dao.urunDAO;
@@ -31,11 +27,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author ubuntu
- */
 public class GirisEkraniController implements Initializable {
 
     ObservableList<urunler> urunlist;
@@ -67,13 +58,15 @@ public class GirisEkraniController implements Initializable {
     private TableView<urunler> urunLİstele_tableView;
     @FXML
     private Label toplamSatisLabel;
+
+    @FXML
+    private Label vStatus;
     @FXML
     private TableColumn<urunler, Integer> urun_id;
     @FXML
     private TableColumn<urunler, String> urun_Adi;
     @FXML
     private TableColumn<urunler, Double> urun_fiyat;
-
     @FXML
     private TableColumn<urunler, Double> satis_fiyati;
     @FXML
@@ -81,7 +74,10 @@ public class GirisEkraniController implements Initializable {
     @FXML
     private TableColumn<?, ?> indirim;
 
-    
+    @FXML
+    private void vtDurum(ActionEvent event) {
+        vStatus.setText("Disconnected");
+    }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         editButton.setDisable(true);
@@ -102,8 +98,6 @@ public class GirisEkraniController implements Initializable {
 
         urunlist = FXCollections.observableArrayList(udao.read(sayi));
         urunLİstele_tableView.setItems(urunlist);
-        
-
     }
 
     @FXML
