@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
@@ -16,144 +15,139 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1080.0" stylesheets="/Dosyalar/bootstrap3.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oose.GirisEkraniController">
-   <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane prefHeight="41.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
-               <children>
-                  <MenuBar fx:id="menubar" prefHeight="29.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <menus>
-                      <Menu mnemonicParsing="false" text="Ürün">
-                        <items>
-                          <MenuItem mnemonicParsing="false" onAction="#showInsertButton" text="Ürün Ekle" />
-                              <MenuItem mnemonicParsing="false" onAction="#showDeleteButton" text="Ürün Sil" />
-                              <MenuItem mnemonicParsing="false" onAction="#showEditButton" text="Ürün güncelle" />
-                        </items>
-                           <graphic>
-                              <ImageView pickOnBounds="true" preserveRatio="true" />
-                           </graphic>
-                      </Menu>
-                      <Menu mnemonicParsing="false" text="Firma">
-                        <items>
-                          <MenuItem mnemonicParsing="false" text="Firmalar" />
-                        </items>
-                      </Menu>
-                      <Menu mnemonicParsing="false" onAction="#stoksayfasiGecis" text="Stok">
-                        <items>
-                          <MenuItem fx:id="stokgoster" mnemonicParsing="false" onAction="#stoksayfasiGecis" text="Stok takibi" />
-                        </items>
-                      </Menu>
-                    </menus>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <padding>
-                        <Insets left="3.0" top="5.0" />
-                     </padding>
-                  </MenuBar>
-               </children>
-            </AnchorPane>
-         </top>
-         <bottom>
-            <AnchorPane prefHeight="94.0" prefWidth="1080.0" style="-fx-background-color: #c8e6c9;" BorderPane.alignment="CENTER">
-               <children>
-                  <HBox prefHeight="94.0" prefWidth="1080.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Toplam Satış = ">
-                           <HBox.margin>
-                              <Insets left="300.0" top="30.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label fx:id="toplamSatisLabel" text="Label">
-                           <HBox.margin>
-                              <Insets left="300.0" top="30.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children>
-            </AnchorPane>
-         </bottom>
-         <center>
-            <AnchorPane BorderPane.alignment="CENTER">
-               <children>
-                  <TableView fx:id="urunLİstele_tableView" prefHeight="585.0" prefWidth="756.0" style="-fx-border-color: #00897b;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
-                    <columns>
-                      <TableColumn fx:id="urun_id" prefWidth="100.0" text="URUN İD" />
-                      <TableColumn fx:id="urun_Adi" editable="false" prefWidth="250.0" sortable="false" text="URUN ADI" />
-                        <TableColumn fx:id="urun_fiyat" minWidth="0.0" prefWidth="123.0" text="FİYAT" />
-                        <TableColumn fx:id="indirim" minWidth="0.0" prefWidth="97.0" text="İNDİRİM" />
-                        <TableColumn fx:id="satis_fiyati" prefWidth="114.0" text="SATIŞ FİYATI" />
-                    </columns>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </TableView>
-               </children>
-            </AnchorPane>
-         </center>
-         <right>
-            <AnchorPane prefHeight="491.0" prefWidth="324.0" BorderPane.alignment="CENTER">
-               <children>
-                  <VBox fx:id="vStatus" prefHeight="491.0" prefWidth="324.0" style="-fx-background-color: #e6ee9c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Pane prefHeight="200.0" prefWidth="200.0">
-                           <children>
-                              <Button fx:id="urunArabutton" alignment="CENTER" layoutX="82.0" layoutY="100.0" mnemonicParsing="false" onAction="#urunara" prefWidth="144.0" text="Ara">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="editButton" alignment="CENTER" layoutX="82.0" layoutY="140.0" mnemonicParsing="false" onAction="#urunEdit" prefWidth="144.0" text="Getir">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="deleteButton" alignment="CENTER" layoutX="82.0" layoutY="180.0" mnemonicParsing="false" onAction="#urunDelete" prefWidth="144.0" text="Sil">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                              <TextField fx:id="urun_idTextarea" alignment="TOP_CENTER" layoutX="80.0" layoutY="61.0" promptText="ID Yaziniz" />
-                           </children>
-                        </Pane>
-                        <Pane prefHeight="195.0" prefWidth="324.0">
-                           <children>
-                              
-                              
-                              <TextField fx:id="urun_adi_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="2.0" promptText="Urun Ismi Giriniz" />
-                              <TextField fx:id="urun_fiyat_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="46.0" promptText="Urun Fiyati Giriniz" />
-                              <TextField fx:id="urun_satis_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="88.0" promptText="Urun Satis Fiyati Giriniz" />
-                              
-                              <Button fx:id="create_update_button" alignment="CENTER" layoutX="77.0" layoutY="133.0" mnemonicParsing="false" onAction="#urunEkle" prefHeight="25.0" prefWidth="150.0" text="Ekle">
-                                 <graphic>
-                                    <ImageView pickOnBounds="true" preserveRatio="true" />
-                                 </graphic>
-                              </Button>
-                           </children>
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane prefHeight="41.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <MenuBar fx:id="menubar" prefHeight="29.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <menus>
+                                <Menu mnemonicParsing="false" text="Ürün">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" onAction="#showInsertButton" text="Ürün Ekle" />
+                                        <MenuItem mnemonicParsing="false" onAction="#showDeleteButton" text="Ürün Sil" />
+                                        <MenuItem mnemonicParsing="false" onAction="#showEditButton" text="Ürün güncelle" />
+                                    </items>
+                                    <graphic>
+                                        <ImageView pickOnBounds="true" preserveRatio="true" />
+                                    </graphic>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#firmalarsayfasiGecis" text="Firma">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Firmalar" />
+                                    </items>
+                                </Menu>
+                                <Menu mnemonicParsing="false" onAction="#stoksayfasiGecis" text="Stok">
+                                    <items>
+                                        <MenuItem mnemonicParsing="false" text="Stok takibi" />
+                                    </items>
+                                </Menu>
+                            </menus>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                            <padding>
+                                <Insets left="3.0" top="5.0" />
+                            </padding>
+                        </MenuBar>
+                    </children>
+                </AnchorPane>
+            </top>
+            <bottom>
+                <AnchorPane prefHeight="94.0" prefWidth="1080.0" style="-fx-background-color: #c8e6c9;" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox prefHeight="94.0" prefWidth="1080.0" spacing="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Label alignment="CENTER" prefHeight="17.0" prefWidth="102.0" text="Toplam Satış = ">
+                                    <HBox.margin>
+                                        <Insets left="300.0" top="30.0" />
+                                    </HBox.margin>
+                                </Label>
+                                <Label fx:id="toplamSatisLabel" text="Label">
+                                    <HBox.margin>
+                                        <Insets left="300.0" top="30.0" />
+                                    </HBox.margin>
+                                </Label>
+                            </children>
+                        </HBox>
+                    </children>
+                </AnchorPane>
+            </bottom>
+            <center>
+                <AnchorPane BorderPane.alignment="CENTER">
+                    <children>
+                        <TableView fx:id="urunLİstele_tableView" prefHeight="585.0" prefWidth="756.0" style="-fx-border-color: #00897b;" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0">
+                            <columns>
+                                <TableColumn fx:id="urun_id" prefWidth="100.0" text="URUN İD" />
+                                <TableColumn fx:id="urun_Adi" editable="false" prefWidth="250.0" sortable="false" text="URUN ADI" />
+                                <TableColumn fx:id="urun_fiyat" minWidth="0.0" prefWidth="123.0" text="FİYAT" />
+                                <TableColumn fx:id="indirim" minWidth="0.0" prefWidth="97.0" text="İNDİRİM" />
+                                <TableColumn fx:id="satis_fiyati" prefWidth="114.0" text="SATIŞ FİYATI" />
+                            </columns>
+                            <opaqueInsets>
+                                <Insets />
+                            </opaqueInsets>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </center>
+            <right>
+                <AnchorPane prefHeight="491.0" prefWidth="324.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <VBox prefHeight="491.0" prefWidth="324.0" style="-fx-background-color: #e6ee9c;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Pane prefHeight="200.0" prefWidth="200.0">
+                                    <children>
+                                        <Button fx:id="urunArabutton" alignment="CENTER" layoutX="82.0" layoutY="100.0" mnemonicParsing="false" onAction="#urunara" prefWidth="144.0" text="Ara">
+                                            <graphic>
+                                                <ImageView pickOnBounds="true" preserveRatio="true" />
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="editButton" alignment="CENTER" layoutX="82.0" layoutY="140.0" mnemonicParsing="false" onAction="#urunEdit" prefWidth="144.0" text="Getir">
+                                            <graphic>
+                                                <ImageView pickOnBounds="true" preserveRatio="true" />
+                                            </graphic>
+                                        </Button>
+                                        <Button fx:id="deleteButton" alignment="CENTER" layoutX="82.0" layoutY="180.0" mnemonicParsing="false" onAction="#urunDelete" prefWidth="144.0" text="Sil">
+                                            <graphic>
+                                                <ImageView pickOnBounds="true" preserveRatio="true" />
+                                            </graphic>
+                                        </Button>
+                                        <TextField fx:id="urun_idTextarea" alignment="TOP_CENTER" layoutX="80.0" layoutY="61.0" promptText="ID Yaziniz" />
+                              <Label fx:id="notif" layoutX="17.0" layoutY="14.0" prefHeight="43.0" prefWidth="286.0" />
+                                    </children>
+                                </Pane>
+                        <Label fx:id="idKontrol" text="id kontrol" textFill="#ee2929">
                            <VBox.margin>
-                              <Insets top="100.0" />
+                              <Insets left="120.0" top="10.0" />
                            </VBox.margin>
-                        </Pane>
-                        <Label alignment="CENTER" contentDisplay="CENTER" nodeOrientation="LEFT_TO_RIGHT" text="VeriTaban Durumu" textAlignment="CENTER" textFill="#f20000">
-                           <cursor>
-                              <Cursor fx:constant="TEXT" />
-                           </cursor>
-                           <VBox.margin>
-                              <Insets left="105.0" />
-                           </VBox.margin>
-                           <font>
-                              <Font name="Arial Narrow" size="14.0" />
-                           </font>
                         </Label>
-                     </children>
-                  </VBox>
-               </children>
-            </AnchorPane>
-         </right>
-      </BorderPane>
-   </children>
+                                <Pane prefHeight="256.0" prefWidth="324.0">
+                                    <children>
+                              
+                              
+                                        <TextField fx:id="urun_adi_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="2.0" promptText="Urun Ismi Giriniz" />
+                                        <TextField fx:id="urun_fiyat_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="46.0" promptText="Urun Fiyati Giriniz" />
+                                        <TextField fx:id="urun_satis_id" alignment="TOP_CENTER" layoutX="77.0" layoutY="88.0" promptText="Urun Satis Fiyati Giriniz" />
+                              
+                                        <Button fx:id="create_update_button" alignment="CENTER" layoutX="77.0" layoutY="133.0" mnemonicParsing="false" onAction="#urunEkle" prefHeight="25.0" prefWidth="150.0" text="Ekle">
+                                            <graphic>
+                                                <ImageView pickOnBounds="true" preserveRatio="true" />
+                                            </graphic>
+                                        </Button>
+                              <Label fx:id="verikontrol" layoutX="79.0" layoutY="172.0" text="veritabanı kontrol" textFill="#cd1212" />
+                                    </children>
+                                    <VBox.margin>
+                                        <Insets top="100.0" />
+                                    </VBox.margin>
+                                </Pane>
+                            </children>
+                        </VBox>
+                    </children>
+                </AnchorPane>
+            </right>
+        </BorderPane>
+    </children>
 </AnchorPane>

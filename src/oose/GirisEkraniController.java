@@ -1,10 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package oose;
 
+import Dao.idgorelistele;
 import Dao.urunDAO;
 import Entity.urunler;
 
@@ -31,16 +27,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author ubuntu
- */
 public class GirisEkraniController implements Initializable {
 
     ObservableList<urunler> urunlist;
     private int sayi;
-
+    // Bu sınıf kullandığımız tasarım kalıbın context'idir
+    private INotification _notification;
     /*Tanımlamalar*/
     @FXML
     private MenuBar menubar;
@@ -68,6 +60,9 @@ public class GirisEkraniController implements Initializable {
     @FXML
     private Label toplamSatisLabel;
     @FXML
+    private Label notif;
+
+    @FXML
     private TableColumn<urunler, Integer> urun_id;
     @FXML
     private TableColumn<urunler, String> urun_Adi;
@@ -92,12 +87,13 @@ public class GirisEkraniController implements Initializable {
 
     @FXML
     private void urunara(ActionEvent event) {
-
-        if (urun_idTextarea.getText().isEmpty()) {
+   
+        if (urun_idTextarea.getText().isEmpty()) {            
             idKontrol.setText("id alanı boş geçmeyin");
         } else {
             sayi = Integer.parseInt(urun_idTextarea.getText());
-            urunDAO udao = new urunDAO();
+
+            idgorelistele udao = new idgorelistele();
 
             urun_id.setCellValueFactory(new PropertyValueFactory<>("u_id"));
             urun_Adi.setCellValueFactory(new PropertyValueFactory<>("u_adi"));
@@ -112,6 +108,7 @@ public class GirisEkraniController implements Initializable {
 
     @FXML
     private void showInsertButton(ActionEvent event) {
+        notif.setText("");
         editButton.setDisable(true);
         deleteButton.setDisable(true);
         create_update_button.setText("Ekle");
@@ -120,6 +117,7 @@ public class GirisEkraniController implements Initializable {
 
     @FXML
     private void showEditButton(ActionEvent event) {
+        notif.setText("");
         editButton.setDisable(false);
         create_update_button.setDisable(true);
         create_update_button.setText("Güncelle");
@@ -128,7 +126,7 @@ public class GirisEkraniController implements Initializable {
 
     @FXML
     private void showDeleteButton(ActionEvent event) {
-
+        notif.setText("");
         deleteButton.setDisable(false);
         editButton.setDisable(true);
         create_update_button.setDisable(true);
@@ -136,6 +134,9 @@ public class GirisEkraniController implements Initializable {
 
     @FXML
     private void urunEdit(ActionEvent event) {
+
+        notif.setText("");
+
         create_update_button.setDisable(false);
         create_update_button.setText("Güncelle");
         sayi = Integer.parseInt(urun_idTextarea.getText());
@@ -154,6 +155,13 @@ public class GirisEkraniController implements Initializable {
         sayi = Integer.parseInt(urun_idTextarea.getText());
         urunDAO udao = new urunDAO();
         udao.delete(sayi);
+
+        // =============================== <Start>  Strategy ==================
+        _notification = new DeleteNotification();
+        String state = _notification.getNotificaionState();
+        notif.setText(state);
+
+        // =============================== </End>  Strategy ==================
         urunara(event);
 
     }
@@ -165,7 +173,7 @@ public class GirisEkraniController implements Initializable {
 
 //textfield ların bos gecmesini onlemek için
         if (urun_adi_id.getText().isEmpty() && urun_fiyat_id.getText().isEmpty() && urun_satis_id.getText().isEmpty()) {
-            verikontrol.setText("lütfen tüm alanları doldurun\n urun ismi,fiyatı,satıs fiyatı bos gecmeyin");
+            verikontrol.setText("       lütfen tüm alanları doldurun\nurun ismi,fiyatı,satıs fiyatı bos gecmeyin");
 
         } else {
             urun.setU_adi(urun_adi_id.getText());
@@ -176,8 +184,21 @@ public class GirisEkraniController implements Initializable {
                 udao.update(urun);
                 create_update_button.setText("Ekle");
                 urunara(event);
+                // =============================== <Start>  Strategy ==================
+                _notification = new EditNotification();
+                String state = _notification.getNotificaionState();
+                notif.setText(state);
+
+                // =============================== </End>  Strategy ==================
             } else {
+
                 udao.create(urun);
+                // =============================== <Start>  Strategy ==================
+                _notification = new AddNotification();
+                String state = _notification.getNotificaionState();
+                notif.setText(state);
+
+                // =============================== </End>  Strategy ==================
             }
 
             urun_adi_id.setText("");
